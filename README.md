@@ -29,14 +29,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Instruction
 
 1. Install npm packages
-2. Edit src/tsconfig.app.json file, add "knockout" as type
+2. Edit src/tsconfig.app.json file, add `knockout` as type
    Example:
-   "compilerOptions": {
-   "outDir": "../out-tsc/app",
-   "module": "es2015",
-   "baseUrl": "",
-   "types": [
-   "knockout"
-   ]
-   }
+   `"compilerOptions": {`
+   `"outDir": "../out-tsc/app",`
+   `"module": "es2015",`
+   `"baseUrl": "",`
+   `"types": [`
+   `"knockout"`
+   `]`
+   `}`
 3. Import the package in component
