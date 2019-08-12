@@ -10,7 +10,6 @@ import * as SurveyEditor from 'surveyjs-editor';
 export class CreateSurveyTemplateComponent implements OnInit {
   constructor() {}
 
-  editor;
   editorOptions = {
     showJSONEditorTab: false,
     showEmbededSurveyTab: false,
@@ -21,13 +20,14 @@ export class CreateSurveyTemplateComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.editor = new SurveyEditor.SurveyEditor('surveyEditorContainer', this.editorOptions);
+    const editor = new SurveyEditor.SurveyEditor('surveyEditorContainer', this.editorOptions);
 
+    editor.text = JSON.stringify(this.loadSavedTemplate());
     // editor.isAutoSave = true;
 
     // SurveyJs Save event; save survey
-    this.editor.saveSurveyFunc = function() {
-      console.log(this.editor.text);
+    editor.saveSurveyFunc = function() {
+      console.log(editor.text);
       alert('Result outputed to console');
     };
   }
@@ -48,6 +48,7 @@ export class CreateSurveyTemplateComponent implements OnInit {
       ]
     };
 
-    this.editor.text = JSON.stringify(templateData);
+    return templateData;
+    // this.editor.text = JSON.stringify(templateData);
   }
 }
