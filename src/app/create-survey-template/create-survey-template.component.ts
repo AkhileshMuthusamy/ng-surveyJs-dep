@@ -23,7 +23,20 @@ export class CreateSurveyTemplateComponent implements OnInit {
     const editor = new SurveyEditor.SurveyEditor('surveyEditorContainer', this.editorOptions);
 
     editor.text = JSON.stringify(this.loadSavedTemplate());
+
+    // # Enable autosave
     // editor.isAutoSave = true;
+
+    // Add new button to SurveyJS toolbar
+    editor.toolbarItems.push({
+      id: 'toolboxCustomization',
+      title: 'Save as Template',
+      visible: true,
+      action: () => {
+        alert('User clicked save as template button');
+        console.log('User clicked save as template button');
+      }
+    });
 
     // SurveyJs Save event; save survey
     editor.saveSurveyFunc = function() {
