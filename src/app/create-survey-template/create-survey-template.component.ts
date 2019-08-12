@@ -10,23 +10,44 @@ import * as SurveyEditor from 'surveyjs-editor';
 export class CreateSurveyTemplateComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    const editorOptions = {
-      showJSONEditorTab: false,
-      showEmbededSurveyTab: false,
-      haveCommercialLicense: true,
-      generateValidJSON: true,
-      questionTypes: ['text', 'checkbox', 'radiogroup', 'comment', 'html', 'matrix', 'dropdown', 'rating', 'file'],
-      designerHeight: '600px'
-    };
+  editor;
+  editorOptions = {
+    showJSONEditorTab: false,
+    showEmbededSurveyTab: false,
+    haveCommercialLicense: true,
+    generateValidJSON: true,
+    questionTypes: ['text', 'checkbox', 'radiogroup', 'comment', 'html', 'matrix', 'dropdown', 'rating', 'file'],
+    designerHeight: '600px'
+  };
 
-    const editor = new SurveyEditor.SurveyEditor('surveyEditorContainer', editorOptions);
+  ngOnInit() {
+    this.editor = new SurveyEditor.SurveyEditor('surveyEditorContainer', this.editorOptions);
 
     // editor.isAutoSave = true;
 
-    // save survey
-    editor.saveSurveyFunc = function() {
-      console.log(editor.text);
+    // SurveyJs Save event; save survey
+    this.editor.saveSurveyFunc = function() {
+      console.log(this.editor.text);
+      alert('Result outputed to console');
     };
+  }
+
+  loadSavedTemplate() {
+    const templateData = {
+      pages: [
+        {
+          name: 'page1',
+          elements: [
+            {
+              type: 'checkbox',
+              name: 'question1',
+              choices: ['item1', 'item2', 'item3']
+            }
+          ]
+        }
+      ]
+    };
+
+    this.editor.text = JSON.stringify(templateData);
   }
 }
