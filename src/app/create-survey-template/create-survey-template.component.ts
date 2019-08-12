@@ -39,7 +39,7 @@ export class CreateSurveyTemplateComponent implements OnInit {
     });
 
     // SurveyJs Save event; save survey
-    editor.saveSurveyFunc = function() {
+    editor.saveSurveyFunc = () => {
       console.log(editor.text);
       alert('Result outputed to console');
     };
