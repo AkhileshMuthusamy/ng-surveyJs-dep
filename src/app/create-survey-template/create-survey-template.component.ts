@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Survey from 'survey-knockout';
+// import * as Survey from 'survey-knockout';
 import * as SurveyEditor from 'surveyjs-editor';
 
 @Component({
