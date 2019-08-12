@@ -49,6 +49,5 @@ export class CreateSurveyTemplateComponent implements OnInit {
     };
 
     return templateData;
-    // this.editor.text = JSON.stringify(templateData);
   }
 }
