@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import * as Survey from 'survey-knockout';
+import * as Survey from 'survey-knockout';
 import * as SurveyEditor from 'surveyjs-editor';
 
 @Component({
@@ -20,6 +20,15 @@ export class CreateSurveyTemplateComponent implements OnInit {
   };
 
   ngOnInit() {
+    // Adds a propety in the SurveyEditor
+    Survey.JsonObject.metaData.addProperty('questionbase', {
+      name: 'a_questionId:number',
+      default: 10
+    });
+
+    // Hide the property
+    // Survey.JsonObject.metaData.findProperty('questionbase', 'a_questionId').visible = false;
+
     const editor = new SurveyEditor.SurveyEditor('surveyEditorContainer', this.editorOptions);
 
     editor.text = JSON.stringify(this.loadSavedTemplate());
